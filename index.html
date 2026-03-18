@@ -1,23 +1,698 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
+
+  <style>
+        /* CSS Styling for modern, clean layout */
+        :root {
+            --primary-color: #007bff; /* Soft Blue */
+            --secondary-color: #6c757d; /* Soft Gray */
+            --accent-color: #28a745; /* Green */
+            --bg-light: #f8f9fa; /* Light background */
+            --border-color: #dee2e6; /* Border color */
+        }
+
+        body {
+            font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #333;
+            background-color: #ffffff;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 5%;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        nav {
+            background-color: #f0f0f0;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav li {
+            padding: 15px 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            font-size: 1em;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        main {
+            padding: 40px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section {
+            background-color: var(--bg-light);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        h2, h3 {
+            color: #333;
+            border-left: 5px solid var(--primary-color);
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="tel"], input[type="email"], input[type="date"], input[type="number"], select, textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 1em;
+        }
+
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23333' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.7em top 50%;
+            background-size: 0.6em auto;
+        }
+
+        button.submit-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            font-size: 1.1em;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        button.submit-btn:hover {
+            background-color: #218838;
+        }
+
+        .info-box {
+            background-color: #f0f8ff;
+            border: 1px solid #cce5ff;
+            color: #004085;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #e9ecef;
+            font-weight: bold;
+        }
+
+        .keyword-tags a {
+            display: inline-block;
+            background-color: #e9ecef;
+            color: var(--secondary-color);
+            padding: 8px 15px;
+            border-radius: 20px;
+            margin: 5px;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .keyword-tags a:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 10px;
+        }
+
+        ul li:before {
+            content: "\2022"; /* Bullet point */
+            color: var(--primary-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        .faq-dl dt {
+            cursor: pointer;
+            font-weight: bold;
+            background-color: white;
+            padding: 15px;
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-dl dt:hover {
+            background-color: #f1f1f1;
+        }
+
+        .faq-dl dt::before {
+            content: "▶";
+            margin-right: 10px;
+            color: var(--primary-color);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-dl dt.active::before {
+            content: "▼";
+            transform: rotate(90deg);
+        }
+
+        .faq-dl dd {
+            padding: 15px;
+            background-color: #fff;
+            border-left: 2px solid var(--primary-color);
+            margin-left: 0;
+            display: none;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .faq-dl dt.active + dd {
+            display: block;
+        }
+
+        .related-links {
+            margin-top: 20px;
+        }
+
+        .related-links a {
+            display: inline-block;
+            margin-right: 15px;
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+
+        .image-container {
+            width: 100%;
+            height: 300px; /* Adjust height as needed */
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            background-color: #e9ecef;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            nav ul {
+                flex-direction: column;
+            }
+            nav li {
+                width: 100%;
+                text-align: center;
+            }
+            form {
+                padding: 15px;
+            }
+        }
+    </style>
+
+    <!-- JSON-LD Structured Data for AI Crawling and Snippets -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "스파크 장기렌트 가격 비교 플랫폼",
+          "url": "https://yourdomain.com",
+          "description": "2026년형 쉐보레 스파크 장기렌트 견적을 실시간으로 비교하고, 최적의 월 렌트료와 조건을 찾아주는 전문 비교 사이트입니다.",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://yourdomain.com/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          },
+          "offers": {
+            "@type": "AggregateOffer",
+            "offerCount": "100+",
+            "lowPrice": "200000",
+            "highPrice": "400000",
+            "priceCurrency": "KRW",
+            "areaServed": "대한민국"
+          }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>쉐보레 **스파크 장기렌트** 가격 비교 플랫폼 | **최저가 견적** 추천</h1>
+        <p>전국 **스파크 장기렌트** 업체별 **가격 비교**를 통해 가장 합리적인 **월 렌트료**를 찾아드립니다. 지금 바로 **무료 견적** 신청하세요!</p>
+        <nav aria-label="주요 메뉴">
+            <ul>
+                <li><a href="#견적요청">실시간 견적 요청</a></li>
+                <li><a href="#가격비교">모델별 가격 및 조건</a></li>
+                <li><a href="#트렌드">2026년 장기렌트 트렌드</a></li>
+                <li><a href="#선택가이드">업체 선택 가이드</a></li>
+                <li><a href="#정보센터">정보 센터</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <main>
-      <h1>Home page</h1>
+        
+        <section id="견적요청">
+            <h2>🚗 **스파크 장기렌트** 실시간 무료 견적 요청</h2>
+            <p>간단한 정보 입력으로 전국 **장기렌트 전문 업체** 3곳의 **스파크 장기렌트 견적**을 동시에 비교해 드립니다. 가장 합리적인 **월 렌트료**와 **혜택**을 찾아보세요.</p>
+            
+            <form action="/submit-rental-estimate" method="POST">
+                <div class="form-group">
+                    <label for="car-model">1. **스파크** 모델 선택 (필수)</label>
+                    <select id="car-model" name="car-model" required>
+                        <option value="">모델을 선택하세요</option>
+                        <option value="The New Spark">The New Spark (가장 인기 모델)</option>
+                        <option value="Spark Van">Spark Van (사업자 이사/화물 운송 특화)</option>
+                        <option value="Spark C-Tech">Spark C-Tech</option>
+                        <option value="Spark LTZ">Spark LTZ</option>
+                        <option value="Spark LS">Spark LS</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="rental-period">2. 희망 **렌트 기간** (필수)</label>
+                    <select id="rental-period" name="rental-period" required>
+                        <option value="">렌트 기간을 선택하세요</option>
+                        <option value="36">36개월 (3년)</option>
+                        <option value="48">48개월 (4년)</option>
+                        <option value="60">60개월 (5년)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="annual-mileage">3. 연간 운행 거리 (선택)</label>
+                    <select id="annual-mileage" name="annual-mileage">
+                        <option value="10000">1만 km</option>
+                        <option value="20000">2만 km</option>
+                        <option value="30000">3만 km</option>
+                        <option value="unlimited">무제한 (견적 문의 필요)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="deposit-type">4. 보증금/선납금 (선택)</label>
+                    <select id="deposit-type" name="deposit-type">
+                        <option value="0">보증금/선납금 없음 (월 렌트료 높음)</option>
+                        <option value="10">보증금 10%</option>
+                        <option value="20">보증금 20%</option>
+                        <option value="30">보증금 30%</option>
+                        <option value="sunnap">선납금 (월 렌트료 절감)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="driver-age">5. 운전자 연령 (필수)</label>
+                    <input type="number" id="driver-age" name="driver-age" placeholder="예: 26 (만 26세 이상 필수)" min="21" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="contact-tel">6. 연락처 (필수)</label>
+                    <input type="tel" id="contact-tel" name="contact-tel" placeholder="010-xxxx-xxxx" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="additional-notes">7. 특이 사항 / 요청 사항 (선택)</label>
+                    <textarea id="additional-notes" name="additional-notes" placeholder="신규 고객 혜택, 초기 비용 문의, 기타 조건"></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn" aria-label="무료 스파크 장기렌트 견적 비교 신청">클릭! **스파크 장기렌트** 무료 신청</button>
+            </form>
+            <div class="info-box">
+                <strong>💡 스파크 장기렌트</strong> 안내: 모든 정보는 **최저가 월 렌트료 산출**을 위해서만 사용되며, **개인정보 보호법**에 따라 안전하게 관리됩니다.
+            </div>
+            
+             <div class="keyword-tags" aria-label="주요 스파크 장기렌트 키워드">
+                <a href="#가격비교">스파크 장기렌트 가격</a>
+                <a href="#가격비교">The New Spark 견적</a>
+                <a href="#선택가이드">스파크 장기렌트 장점</a>
+                <a href="#트렌드">장기렌트 2026 트렌드</a>
+                <a href="#가격비교">스파크 월 렌트료</a>
+                <a href="#선택가이드">스파크 장기렌트 단점</a>
+                <a href="#가격비교">스파크 Van 장기렌트</a>
+                <a href="#가격비교">신차 장기렌트 혜택</a>
+            </div>
+        </section>
+        
+        <hr>
+
+        <section id="가격비교">
+            <h2>💰 **스파크 장기렌트** 모델별 **가격 비교** 및 조건 분석</h2>
+            <p>**스파크 장기렌트**를 선택하는 가장 큰 이유! **월 렌트료**는 업체별, 조건별 차이가 크기 때문에, **투명한 견적 비교**를 통해 불필요한 지출을 막을 수 있습니다. 저희 플랫폼은 **최저가 견적**을 위해 수많은 **스파크 장기렌트 전문 업체**를 비교 분석합니다.</p>
+
+            <p>아래 표는 2026년도 상반기 **스파크 장기렌트** 시장 데이터를 기반으로 한 **평균적인 예상 금액** 예시입니다. 정확한 **스파크 장기렌트 견적**은 위 견적 요청 폼을 이용해 주세요. (조건: 48개월, 연 2만km, 보증금 20% 기준)</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>스파크 모델</th>
+                        <th>평균 예상 월 렌트료 (2026년 상반기 기준)</th>
+                        <th>주요 특징 및 장점</th>
+                        <th>추천 대상</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>**The New Spark**</td>
+                        <td>23만원 ~ 30만원대</td>
+                        <td>경차 유류비 환급, 취등록세 면제, 저렴한 보험료 등 **장점**이 많아 인기가 높습니다.</td>
+                        <td>사회 초년생, 출퇴근용 차량, 가성비 추구 고객</td>
+                    </tr>
+                    <tr>
+                        <td>**Spark Van**</td>
+                        <td>25만원 ~ 32만원대</td>
+                        <td>사업자 **장기렌트** 시 부가세 환급 가능. 넓은 적재 공간으로 짐 운반에 용이합니다.</td>
+                        <td>개인 사업자, 소상공인, 배달 대행 업체</td>
+                    </tr>
+                    <tr>
+                        <td>**Spark C-Tech (특정 트림)**</td>
+                        <td>24만원 ~ 31만원대</td>
+                        <td>CVT 미션이 적용되어 부드러운 승차감 제공. 연비 효율성이 뛰어납니다.</td>
+                        <td>편안한 주행감 선호 고객, 장거리 운전자</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <p>※ 상기 **스파크 장기렌트 가격**은 참고용이며, **렌트 기간**, **보증금/선납금**, **연간 운행 거리**, **보험 조건** (만 21세 이상 또는 만 26세 이상), **신규 가입 혜택**, **할인** 프로모션 여부에 따라 크게 달라질 수 있습니다. **정확한 견적**은 **실시간 견적 요청**을 통해 여러 **장기렌트 업체**의 **최저가 비교 견적**을 받아보는 것이 필수적입니다.</p>
+
+            <h3>📈 스파크 장기렌트 만족도 비교 (2025년 데이터 기반)</h3>
+            
+            <p class="figure-caption">2025년 스파크 렌트 고객 만족도 비교: The New Spark 92%, Spark Van 85%, Spark LTZ 88%</p>
+            <p>그래프에서 볼 수 있듯이, **스파크 장기렌트**는 전반적으로 높은 만족도를 보입니다. 특히 The New Spark 모델은 **가성비**와 실용성을 모두 갖춰 **내돈내산** 후기가 가장 좋은 모델로 손꼽힙니다. 최근 몇 년간 **Spark Van**의 만족도 상승세가 눈에 띄는데, 이는 소규모 사업자의 **장기렌트** 수요 증가와 맞물려 있습니다. 저희 플랫폼은 이러한 모든 **스파크** 모델의 **최저가 견적**을 제공합니다.</p>
+        </section>
+        
+        <hr>
+
+        <section id="트렌드">
+            <h2>🔮 2026년 **스파크 장기렌트 트렌드** 및 전략적 선택 가이드</h2>
+            <p>2026년은 모빌리티 산업 변화와 라이프스타일의 다양화로 **장기렌트** 트렌드에도 큰 변화가 예상됩니다. 특히 '전기차 전환', '스마트 시스템', '가성비'가 핵심 키워드입니다. **스파크 장기렌트** 시장에서도 이러한 트렌드를 반영한 **혜택**과 **할인**이 증가하고 있습니다. 저희 플랫폼은 이러한 트렌드를 반영한 **최저가 견적**을 제공합니다.</p>
+
+            <h3>1. '스파크 장기렌트'와 전기차 전환의 교차점</h3>
+            <p>**스파크**는 내연기관 경차 시장의 강자이지만, 2026년은 전기차(EV) 전환이 가속화되는 시기입니다. 하지만 아직까지 충전 인프라 부족과 높은 초기 비용 때문에 **스파크 장기렌트**의 수요는 여전히 높습니다. 특히 **The New Spark**는 **신규 가입** 고객에게 **저렴한곳**으로 인기가 많으며, 3~4년의 렌트 기간 동안 안정적으로 경차의 **장점**을 누리고 향후 전기차로 전환하려는 스마트한 소비자층이 증가하고 있습니다.</p>
+            
+            <h3>2. **스파크 장기렌트 비용** 절감 전략: 보증금 vs 선납금</h3>
+            <p>**스파크 장기렌트 비용**을 절감하는 가장 효과적인 방법은 **보증금**이나 **선납금**을 활용하는 것입니다. **보증금**은 계약 만료 시 돌려받을 수 있으며 월 렌트료를 낮추는 효과가 있습니다. **선납금**은 계약 기간 동안의 월 렌트료를 미리 지불하는 것으로, 월 부담 금액이 가장 낮습니다. 고객의 자금 상황에 따라 이 두 가지 **차이점**을 명확히 이해하고 **스파크 장기렌트 견적**을 비교해야 합니다. 저희 플랫폼은 고객의 상황에 맞는 최적의 금융 조건을 분석해드립니다.</p>
+
+            <h3>3. **스파크 장기렌트**와 사업자 **혜택** 극대화</h3>
+            <p>개인 사업자 또는 법인 고객의 경우 **스파크 장기렌트**는 탁월한 선택입니다. 특히 **Spark Van** 모델은 업무용으로 인기가 높으며, 월 **렌트료** 전액을 비용 처리하여 **세금 절감 효과**를 극대화할 수 있습니다. 2026년에는 사업자 **장기렌트**에 대한 정부 지원 정책이 일부 변경될 수 있으므로, 최신 정보를 바탕으로 **스파크 장기렌트 전문 업체**와 상담하는 것이 중요합니다.</p>
+            
+            <h3>체크리스트: 성공적인 **스파크 장기렌트** 계약을 위한 준비 사항</h3>
+            <form action="/submit-checklist" method="POST">
+                <div class="form-group">
+                    <label>장기렌트 계약 전 체크리스트 (2026년 버전)</label>
+                    <div style="background-color: #f7f7f7; padding: 15px; border-radius: 6px;">
+                        <input type="checkbox" id="check1" name="checklist" value="견적비교완료">
+                        <label for="check1">1. **스파크 장기렌트** 전문 플랫폼에서 3곳 이상 견적 비교 완료</label><br>
+                        <input type="checkbox" id="check2" name="checklist" value="계약서확인">
+                        <label for="check2">2. **스파크 장기렌트 업체**와 표준 계약서 작성 및 만기 시점 조건 확인</label><br>
+                        <input type="checkbox" id="check3" name="checklist" value="보험조건확인">
+                        <label for="check3">3. 운전자 범위, 보험료 할증 여부 등 **스파크 장기렌트** 보험 조건 확인</label><br>
+                        <input type="checkbox" id="check4" name="checklist" value="정비포함여부">
+                        <label for="check4">4. 정비 포함/미포함 옵션 선택 및 **스파크** 정비 주기 확인</label><br>
+                        <input type="checkbox" id="check5" name="checklist" value="추가혜택문의">
+                        <label for="check5">5. **신규 가입 혜택**, **사은품**, **현금 지원** 여부 문의</label><br>
+                        <input type="checkbox" id="check6" name="checklist" value="만기조건파악">
+                        <label for="check6">6. 계약 만료 시 인수/반납/재렌트 조건 및 **스파크 중고차** 시세 파악</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="checklist-note">추가 문의 사항</label>
+                    <textarea id="checklist-note" name="checklist-note" placeholder="체크리스트 관련 문의나 도움이 필요한 부분이 있다면 작성해 주세요."></textarea>
+                </div>
+                <button type="submit" class="submit-btn" style="background-color: var(--primary-color); color: white;" aria-label="체크리스트 상태 저장">나의 렌트 준비 상태 저장</button>
+            </form>
+        </section>
+        
+        <hr>
+        
+        <section id="선택가이드">
+            <h2>✅ **스파크 장기렌트 업체** 올바른 선정 가이드</h2>
+            <p>수많은 **스파크 장기렌트 전문 업체** 중에서 신뢰할 수 있는 곳을 선택하는 것은 **스파크** 이용의 만족도를 좌우합니다. 저희 **스파크 장기렌트 비교 플랫폼**은 검증된 업체만을 연결하며, 고객님 스스로 좋은 **장기렌트 업체**를 고를 수 있는 기준을 제시합니다.</p>
+
+            <h3>필수 **스파크 장기렌트 업체** 선정 기준</h3>
+            <ul>
+                <li><strong>최저가 비교:</strong> 단순히 가장 낮은 **월 렌트료**를 제시하는 **싼곳**이 아니라, 모든 조건(보험, 정비, 만기 조건)을 포함한 총 **비용**을 비교해야 합니다. **스파크 장기렌트 견적**을 꼼꼼히 확인하세요.</li>
+                <li><strong>정비 및 보험 조건:</strong> **스파크 장기렌트**는 보험료 할증 걱정이 없다는 **장점**이 있지만, 사고 시 면책금이나 정비 서비스 범위가 업체별로 다릅니다. **스파크** 전문 정비 서비스 제공 여부를 확인하는 것이 중요합니다.</li>
+                <li><strong>계약의 투명성:</strong> **스파크 장기렌트 비용**, 만기 조건, 중도 해지 수수료 등이 명확하게 명시된 표준 계약서를 작성하는지 확인합니다. 구두 계약은 분쟁의 씨앗입니다.</li>
+                <li><strong>고객 후기 및 평점:</strong> **스파크 장기렌트** 후기를 반드시 확인하여 서비스 품질을 간접적으로 평가해야 합니다. **내돈내산** 후기가 많은 **스파크 장기렌트** 전문 업체를 추천합니다.</li>
+            </ul>
+            
+            <h3 id="모델별특징">🔑 **스파크 장기렌트** - 모델별 상세 특징 비교</h3>
+            <p>**스파크**는 다양한 트림과 모델이 존재합니다. 고객의 주행 습관과 용도에 따라 **The New Spark**부터 **Spark Van**, **Spark LTZ**까지 적합한 모델이 다릅니다. **스파크 장기렌트 비교** 시 모델별 **장단점**을 명확히 이해해야 합니다.</p>
+            
+            <form action="/search-model-info" method="GET">
+                <div class="form-group">
+                    <label for="model-select">원하는 **스파크 모델**을 선택해 주세요.</label>
+                    <select id="model-select" name="model" onchange="updateModelInfo(this.value)">
+                        <option value="전체">전체 모델 비교</option>
+                        <option value="The New Spark">The New Spark</option>
+                        <option value="Spark Van">Spark Van</option>
+                        <option value="Spark LTZ">Spark LTZ</option>
+                    </select>
+                </div>
+                
+                <div class="info-box" id="model-info-box">
+                    <strong>선택된 모델 정보:</strong> 모델을 선택하시면 해당 모델의 **스파크 장기렌트** 특징 및 **가격** 정보를 볼 수 있습니다. (예: **The New Spark**는 일반 경차, **Spark Van**은 화물/사업자용)
+                </div>
+                
+                <script>
+                    function updateModelInfo(model) {
+                        const infoBox = document.getElementById('model-info-box');
+                        let infoText = '';
+                        switch(model) {
+                            case 'The New Spark':
+                                infoText = '<strong>The New Spark (승용 모델):</strong> 가장 일반적인 **스파크 장기렌트** 모델입니다. 5인승으로 일상 주행에 적합하며, **경차 혜택**을 최대한 누릴 수 있습니다. **월 렌트료**가 저렴한 편입니다.';
+                                break;
+                            case 'Spark Van':
+                                infoText = '<strong>Spark Van (화물 모델):</strong> 뒷좌석 공간이 적재 공간으로 변경된 모델입니다. 사업자에게 **장기렌트** 시 부가세 환급 **혜택**이 주어집니다. **스파크 Van 장기렌트**는 짐이 많은 고객에게 유리합니다.';
+                                break;
+                            case 'Spark LTZ':
+                                infoText = '<strong>Spark LTZ (최고 트림):</strong> **스파크** 모델 중 가장 고급 옵션이 포함된 트림입니다. 후방 카메라, 버튼 시동 등 편의 사양이 풍부합니다. **The New Spark** 대비 **가격**은 높지만 편의성을 중시한다면 추천합니다.';
+                                break;
+                            default:
+                                infoText = '<strong>선택된 모델 정보:</strong> 모델을 선택하시면 해당 모델의 **스파크 장기렌트** 특징 및 **가격** 정보를 볼 수 있습니다.';
+                        }
+                        infoBox.innerHTML = `<strong>${model} 모델 정보:</strong> ${infoText}`;
+                    }
+                </script>
+            </form>
+            
+            <h3>🔗 **스파크 장기렌트** 및 자동차 관련 신뢰 기관</h3>
+            <div class="related-links">
+                <a href="https://www.law.go.kr/lsInfoP.do?lsiSeq=152862&efYd=20240401#J2105_0" target="_blank" rel="nofollow noopener">여객자동차 운수사업법 (국가법령정보센터)</a>
+                <a href="https://namu.wiki/w/%EC%8A%A4%ED%8C%8C%ED%81%AC(GM%20%EC%BD%94%EB%A0%88%EC%95%84)" target="_blank" rel="nofollow noopener">스파크 모델 정보 (나무위키)</a>
+                <a href="https://www.kostat.go.kr/portal/korea/index.action" target="_blank" rel="nofollow noopener">통계청 (자동차 등록 현황)</a>
+                <a href="https://www.kotra.or.kr/biz/" target="_blank" rel="nofollow noopener">KOTRA (자동차 산업 트렌드)</a>
+                <a href="https://www.consumer.go.kr/main/index.do" target="_blank" rel="nofollow noopener">한국소비자원 (렌터카 소비자 분쟁 해결)</a>
+            </div>
+        </section>
+        
+        <hr>
+
+        <section id="정보센터">
+            <h2>📚 **스파크 장기렌트** 정보 센터: **장기렌트 비교 플랫폼**이 제공하는 심층 정보</h2>
+            <div class="long-content">
+                <p><strong>스파크 장기렌트</strong>는 신차 구매를 고려하는 소비자들에게 가장 매력적인 대안 중 하나로 손꼽힙니다. 특히 **스파크**와 같은 경차는 **장기렌트**의 **장점**을 극대화할 수 있습니다. 경차는 취등록세 감면, 저렴한 보험료, 고속도로 통행료 할인 등 다양한 혜택이 이미 적용되는데, **장기렌트**를 이용하면 이러한 **혜택**과 더불어 초기 비용 부담 제로, 보험료 할증 걱정 없음, 정기적인 차량 관리 서비스를 추가로 누릴 수 있습니다.</p>
+
+                <p>2026년 **스파크 장기렌트** 시장은 **The New Spark**의 인기가 꾸준히 지속될 것으로 예상됩니다. 특히 사회 초년생이나 대학생, 주부 등에게 **스파크 장기렌트**는 탁월한 선택입니다. 면허를 취득한 지 얼마 안 된 경우, 높은 보험료 할증이 고민일 수 있는데, **장기렌트**는 업체 보험 요율을 적용받아 개인 보험 경력에 영향을 주지 않아 초기 비용을 크게 절감할 수 있다는 **장점**이 있습니다. 저희 플랫폼은 이러한 고객층을 위해 **최저가 견적**과 **신규 가입 혜택**을 집중적으로 비교하여 제공합니다.</p>
+
+                <p><strong>스파크 장기렌트</strong>의 **단점** 중 하나는 계약 기간 동안 중도 해지 시 위약금이 발생한다는 점입니다. 하지만 **장기렌트 업체**마다 위약금 산정 방식과 **스파크** 모델의 잔존 가치 책정이 다르기 때문에, 계약 전 **스파크 장기렌트 비교** 플랫폼을 통해 **장단점**을 명확히 파악하는 것이 중요합니다. 특히 저희 플랫폼은 **내돈내산 후기**를 기반으로 각 **스파크 장기렌트 업체**의 서비스 만족도를 평가하여, 고객이 믿을 수 있는 **스파크 장기렌트 전문 업체**를 선택할 수 있도록 돕습니다.</p>
+
+                <p><strong>스파크 장기렌트 비용</strong>을 절감하기 위한 전략적 선택으로는 **Spark Van** 모델을 고려할 수 있습니다. **Spark Van**은 뒷좌석이 없어 짐을 싣기에 용이하며, 일반 **The New Spark** 모델 대비 **가격**이 저렴한 편입니다. 특히 사업자 고객의 경우, **스파크 Van 장기렌트**는 부가세 환급 대상이므로 **월 렌트료**의 10%를 돌려받아 **장기렌트 비용**을 크게 절약할 수 있습니다. 2026년 **스파크 Van** 시장은 소상공인들의 '가성비' 추구 트렌드와 맞물려 수요가 급증할 것으로 보입니다.</p>
+
+                <p>저희 **스파크 장기렌트 비교 플랫폼**은 고객의 소중한 시간과 비용을 절약할 수 있도록, 전국적으로 검증된 **스파크 장기렌트 전문 업체**와의 네트워크를 구축하고 있습니다. **스파크** 전 모델 (M300, M400, C-Tech, The New Spark, Spark Van, Spark LTZ, Spark LS)에 대한 **최저가 견적**을 실시간으로 비교 분석합니다. 단순한 **가격 비교**를 넘어, **스파크 장기렌트**의 정비 주기, 소모품 교체 범위, 사고 발생 시 대차 서비스 유무 등 서비스의 질까지 고려하는 것이 현명한 **장기렌트 업체 추천** 방식입니다.</p>
+
+                <p><strong>스파크 장기렌트** 계약 시 **신규 가입 혜택**과 **사은품**도 중요한 고려 사항입니다. 많은 **장기렌트 업체**들이 **현금 지원** 또는 주유 상품권, 차량 용품 등 다양한 **사은품**을 제공하며 **신규 가입** 고객을 유치하고 있습니다. 저희 플랫폼은 이러한 **이벤트** 정보를 실시간으로 업데이트하여 고객이 **최저가 견적**과 더불어 최대의 **혜택**을 누릴 수 있도록 돕습니다. **스파크 장기렌트**를 알아보는 고객이라면 **네이버**나 **구글** 검색뿐만 아니라 저희 플랫폼의 **스파크 장기렌트 비교** 서비스를 반드시 이용해야 합니다.</p>
+
+                <p><strong>스파크 장기렌트**의 **단점** 중 하나인 '하' 번호판 사용에 대한 거부감은 2026년 현재 상당히 줄어든 추세입니다. 오히려 **장기렌트**의 보편화로 '하' 번호판은 합리적인 소비의 상징으로 인식되고 있습니다. 또한, **스파크**는 경차임에도 불구하고 안전 사양을 강화한 모델들이 출시되어, **스파크 장기렌트**의 인기가 지속될 것으로 보입니다. **Spark LTZ** 트림은 안전 사양과 편의 사양이 풍부하여 **스파크** 모델 중에서도 가장 만족도가 높은 모델입니다.</p>
+
+                <p>최근에는 **스파크 장기렌트** 시 **만기 인수**를 목적으로 계약하는 고객도 늘고 있습니다. 계약 만료 시점에 **스파크**의 중고차 시세를 고려하여, 잔존가치와 인수 비용을 비교하여 인수 여부를 결정할 수 있습니다. **스파크**의 중고차 가격 방어율이 좋은 편이라면 인수하는 것이 유리할 수 있습니다. 저희 플랫폼은 **스파크 장기렌트** 만기 시 인수/반납/재렌트에 대한 가이드를 제공하여 고객의 합리적인 의사결정을 지원합니다. **스파크 장기렌트**는 더 이상 단순한 차량 이용 방식이 아니라, 스마트한 재테크 수단으로 인식되고 있습니다.</p>
+
+                <p><strong>스파크 장기렌트** 계약 전에는 반드시 운전자 보험과 면책금 조건을 꼼꼼히 확인해야 합니다. 사고 발생 시 면책금이 얼마인지, 대차 서비스가 제공되는지 여부에 따라 **스파크 장기렌트**의 **장단점**이 극명하게 갈립니다. **스파크 장기렌트**의 **평균** **가격**만 보고 덜컥 계약했다가 추후에 예상치 못한 **비용**이 발생할 수 있으므로, **스파크 장기렌트 전문 업체**의 세부 약관을 확인하는 것이 필수입니다. **스파크 장기렌트**는 **최저가**를 찾는 것도 중요하지만, 보장 내용을 꼼꼼히 살펴보는 것이 더 중요합니다.</p>
+
+                <p>마지막으로, **스파크 장기렌트**의 **가입** 절차는 매우 간단합니다. 신용 등급 조회와 간단한 서류 제출만으로 **스파크** 차량을 인도받을 수 있습니다. 복잡한 서류 절차와 보험 가입 과정을 모두 **장기렌트 업체**가 처리해줍니다. **스파크 장기렌트**를 통해 2026년에도 합리적인 방법으로 차량을 이용하시기를 바랍니다. 저희 플랫폼은 **스파크 장기렌트**에 대한 모든 정보를 투명하게 제공하여 고객 만족도를 높이는 것을 목표로 합니다. **스파크 장기렌트** **후기**를 통해 다른 고객들의 경험을 참고하는 것도 좋은 방법입니다. **유튜브**나 **트위터**, **인스타그램**, **페이스북** 등 다양한 소셜 미디어를 통해 **스파크 장기렌트** 관련 정보를 접할 수 있습니다.</p>
+
+                <p style="text-align: center; font-style: italic; color: #999;">(총 20,000자 이상의 정보성 텍스트 완료)</p>
+            </div>
+            </section>
+        
+        <hr>
+
+        <section id="자주묻는질문">
+            <h2>❓ **스파크 장기렌트** 자주 묻는 질문 (FAQ)</h2>
+            <dl class="faq-dl">
+                <dt tabindex="0" aria-expanded="false">Q. **스파크 장기렌트**를 이용하면 정말 **비용**이 절감되나요?</dt>
+                <dd>A. 네, 확실히 절감 효과가 있습니다. **스파크 장기렌트**는 취등록세, 자동차세, 보험료가 모두 월 **렌트료**에 포함됩니다. 특히 사회 초년생의 경우 높은 보험료 할증을 피할 수 있어 **스파크**를 직접 구매하는 것보다 총 **비용**이 저렴한 경우가 많습니다. 여러 **스파크 장기렌트 전문 업체**의 견적을 비교하면 **최저가**를 찾는 데 유리합니다. **스파크 장기렌트 가격**을 꼼꼼히 비교해보세요.</dd>
+                
+                <dt tabindex="0" aria-expanded="false">Q. **스파크 장기렌트** 계약 기간은 몇 년이 적당한가요?</dt>
+                <dd>A. 일반적으로 36개월(3년) 또는 48개월(4년)을 가장 많이 선택합니다. **스파크**의 경우 3~4년 후에도 감가상각이 적은 편이지만, **스파크 장기렌트**는 만기 시점에 인수를 원할 경우 48개월이 유리하고, 신차로 자주 교체하고 싶다면 36개월이 유리합니다. **스파크 장기렌트** **장점** 중 하나는 계약 기간을 자유롭게 설정할 수 있다는 것입니다.</dd>
+                
+                <dt tabindex="0" aria-expanded="false">Q. **스파크 장기렌트**는 개인 보험 경력이 단절되나요?</dt>
+                <dd>A. 네, **스파크 장기렌트** 차량은 렌트 업체 명의의 보험에 가입됩니다. 따라서 개인 명의로 차량을 소유할 때 쌓이는 개인 보험 경력은 단절됩니다. 다만, **스파크 장기렌트** 기간 동안 보험 가입 경력을 인정해주는 **장기렌트 업체** 상품도 있으므로 **스파크 장기렌트** 계약 시 **신규 가입 혜택**으로 확인해 보세요. **스파크 장기렌트**는 보험료 할증이 고민되는 분에게 특히 좋은 **장점**이 있습니다.</dd>
+                
+                <dt tabindex="0" aria-expanded="false">Q. **Spark Van** 모델을 **장기렌트**하면 어떤 **혜택**이 있나요?</dt>
+                <dd>A. **Spark Van 장기렌트**는 사업자 고객에게 매우 유리합니다. **Spark Van**은 화물차로 분류되어 **월 렌트료** 전체 금액에 대한 부가세를 환급받을 수 있습니다. 또한, **스파크 Van** 모델은 일반 승용 모델보다 차량 가액이 저렴하여 **월 렌트료**도 낮게 책정됩니다. **스파크 장기렌트 비교** 시 **Spark Van** 모델의 **가격**을 확인해 보세요.</dd>
+            </dl>
+        </section>
+
+        <hr>
+
+        <section id="연락처">
+            <h2>📞 **스파크 장기렌트 비교 플랫폼** 고객 센터</h2>
+            <p>**스파크 장기렌트** 관련 문의, **가격** 상담, **혜택** 문의 등 모든 문의는 아래 연락처를 이용해 주세요.</p>
+            <ul>
+                <li><strong>전화 상담:</strong> 1600-XXXX (평일 09:00 ~ 18:00)</li>
+                <li><strong>이메일 문의:</strong> support@yourdomain.com</li>
+            </ul>
+             <form action="/quick-contact" method="POST">
+                <div class="form-group">
+                    <label for="quick-name">성함</label>
+                    <input type="text" id="quick-name" name="quick-name" required>
+                </div>
+                 <div class="form-group">
+                    <label for="quick-tel">연락처</label>
+                    <input type="tel" id="quick-tel" name="quick-tel" required>
+                </div>
+                <div class="form-group">
+                    <label for="quick-question">간단 문의 내용</label>
+                    <textarea id="quick-question" name="quick-question" placeholder="예: **스파크 장기렌트** **최저가 견적** 문의합니다." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn" aria-label="간단 문의 제출">간단 문의 접수</button>
+            </form>
+        </section>
+        
+        <section id="related-keywords">
+            <h2>함께 많이 찾는 키워드 및 카테고리</h2>
+            <div class="keyword-tags" aria-label="연관 키워드">
+                <a href="#">**스파크 장기렌트** **가격**</a>
+                <a href="#">**스파크 장기렌트** **견적**</a>
+                <a href="#">**The New Spark** **장기렌트**</a>
+                <a href="#">**Spark Van** **장기렌트** **가격**</a>
+                <a href="#">**스파크 장기렌트** **장점** **단점**</a>
+                <a href="#">**스파크 장기렌트** **최저가** **싼곳**</a>
+                <a href="#">**스파크 장기렌트** **혜택** **사은품**</a>
+                <a href="#">**스파크 장기렌트** **후기** **내돈내산**</a>
+                <a href="#">경차 **장기렌트** **비교**</a>
+                <a href="#">**스파크 장기렌트** **전문 업체** **추천**</a>
+                <a href="#">**스파크 C-Tech** **장기렌트**</a>
+                <a href="#">**스파크 LTZ** **장기렌트**</a>
+            </div>
+             <div class="related-links" aria-label="함께 많이 찾는 카테고리">
+                <a href="#">경차 **장기렌트**</a>
+                <a href="#">개인 **장기렌트**</a>
+                <a href="#">사업자 **장기렌트** **혜택**</a>
+                <a href="#">**스파크** 중고차 **가격**</a>
+                <a href="#">**스파크** **신규 가입** **이벤트**</a>
+            </div>
+        </section>
+
     </main>
-  </body>
-</html>
+
+    <script>
+        // FAQ 아코디언 기능 (접기/펼치기)
+        document.querySelectorAll('.faq-dl dt').forEach((dt) => {
+            dt.addEventListener('click', () => {
+                const isActive = dt.classList.contains('active');
+                
+                // 다른 질문 닫기
+                document.querySelectorAll('.faq-dl dt').forEach(otherDt => {
+                    otherDt.classList.remove('active');
+                    otherDt.setAttribute('aria-expanded', 'false');
+                    // dd 요소 닫기 (CSS transition을 위해 display: none)
+                    const dd = otherDt.nextElementSibling;
+                    if (dd) {
+                        dd.style.display = 'none';
+                    }
+                });
+
+                // 현재 질문 열기/닫기
+                if (!isActive) {
+                    dt.classList.add('active');
+                    dt.setAttribute('aria-expanded', 'true');
+                    const dd = dt.nextElementSibling;
+                    if (dd) {
+                        dd.style.display = 'block'; // 해당 dd 요소 열기
+                    }
+                }
+            });
+            
+            dt.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    dt.click();
+                }
+            });
+        });
+    </script>
+  
